@@ -30,4 +30,6 @@ jobs:
             cache: 'maven'
         - name: release - prepare
           run: mvn -B release:prepare
+        - name: release - perform (publish)
+          run: mvn release:perform
           
