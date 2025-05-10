@@ -1,0 +1,22 @@
+name: Maven Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Release
+        uses: qcastel/github-actions-maven-release@v1.12.43
+        env:
+          JAVA_HOME: /usr/lib/jvm/java-21-openjdk/
+
+        with:
+          release-branch-name: "main"
