@@ -24,3 +24,6 @@ jobs:
             java-version: ${{ matrix.java-version }}
             distribution: ${{ matrix.distribution }}
             cache: 'maven'
+        - name: release - prepare
+          run: mvn -B release:prepare
+          
