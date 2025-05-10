@@ -28,8 +28,11 @@ jobs:
             java-version: ${{ matrix.java-version }}
             distribution: ${{ matrix.distribution }}
             cache: 'maven'
+            server-id: github
+            server-username: GITHUB_ACTOR
+            server-password: GITHUB_TOKEN
         - name: release - prepare
-          run: mvn -B release:prepare
+          run: mvn -B --no-transfer-progress release:prepare
         - name: release - perform (publish)
-          run: mvn release:perform
+          run: mvn --no-transfer-progress release:perform
           
