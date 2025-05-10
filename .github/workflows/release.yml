@@ -6,12 +6,18 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  packages: write
+  contents: write
+  
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release
         uses: qcastel/github-actions-maven-release@v1.12.43
