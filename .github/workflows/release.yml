@@ -11,7 +11,7 @@ permissions:
   contents: write
   
 jobs:
-  release:
+  release:    
     strategy:
       matrix:
         java-version: [ 21 ]
@@ -28,11 +28,10 @@ jobs:
             java-version: ${{ matrix.java-version }}
             distribution: ${{ matrix.distribution }}
             cache: 'maven'
-            server-id: github
-            server-username: GITHUB_ACTOR
-            server-password: GITHUB_TOKEN
         - name: release - prepare
           run: mvn -B --no-transfer-progress release:prepare
         - name: release - perform (publish)
           run: mvn --no-transfer-progress release:perform
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
