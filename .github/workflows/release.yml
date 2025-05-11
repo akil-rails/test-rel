@@ -13,3 +13,5 @@ permissions:
 jobs:
   call-release:
     uses: akil-rails/shared-github-workflows/.github/workflows/release.yml@main
+    secrets:
+      PAT: ${{ secrets.PAT }}
