@@ -21,5 +21,10 @@
       <url>https://maven.pkg.github.com/akil-rails/*</url>
     </repository>
   </repositories>
-
+  <scm>
+    <connection>scm:git:${project.scm.url}.git</connection>
+    <developerConnection>scm:git:${project.scm.url}.git</developerConnection>
+    <url>${git.url}/${project.artifactId}</url>
+    <tag>HEAD</tag>
+  </scm>
 </project>
