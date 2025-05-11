@@ -1,4 +1,4 @@
-name: Maven Release
+name: Release
 
 on:
   push:
@@ -9,29 +9,7 @@ on:
 permissions:
   packages: write
   contents: write
-  
+
 jobs:
-  release:    
-    strategy:
-      matrix:
-        java-version: [ 21 ]
-        distribution: [ temurin ]
-    runs-on: ubuntu-latest
-    steps:
-        - uses: actions/checkout@v4
-          with:          
-            fetch-depth: 0
-        - name: bot user
-          run: git config user.name "${{ github.actor }}"
-        - uses: actions/setup-java@v4.7.1
-          with:
-            java-version: ${{ matrix.java-version }}
-            distribution: ${{ matrix.distribution }}
-            cache: 'maven'
-        - name: release - prepare
-          run: mvn -B --no-transfer-progress release:prepare
-        - name: release - perform (publish)
-          run: mvn --no-transfer-progress release:perform
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+  call-release:
+    uses: akil-rails/shared-github-workflows/.github/workflows/release.yml@main
