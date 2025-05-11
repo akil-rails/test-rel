@@ -7,7 +7,7 @@
   <parent>
     <groupId>dev.akil</groupId>
     <artifactId>build-parent</artifactId>
-    <version>7.1.0</version>
+    <version>7.1.1</version>
   </parent>
 
   <groupId>dev.akil</groupId>
@@ -22,4 +22,10 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/${github.owner}</url>
+    </repository>
+  </repositories>
 </project>
